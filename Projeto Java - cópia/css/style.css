@@ -1,0 +1,528 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  background-color: #f8f9fa;
+  color: #333;
+  height: 100vh;
+  display: flex;
+}
+
+/* Títulos */
+h1, h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+/* Formulários e Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+input:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+label {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* Botões */
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#btnLogout {
+  background-color: #e74c3c;
+  float: right;
+}
+
+#btnLogout:hover {
+  background-color: #c0392b;
+}
+
+/* Links */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Mensagens de Erro */
+.error {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Containers Específicos */
+#camera {
+  border: 1px solid #ddd;
+  background-color: #eee;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+#resultado, #status {
+  font-weight: bold;
+}
+
+#resumoCompra, #pagamento {
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+#card-element {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 15px 0;
+  background-color: #fff;
+}
+
+#card-errors {
+  color: #e74c3c;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#mensagem {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* =========================
+     Estilos da Lista Geral
+========================= */
+#listaProdutos {
+  margin-top: 20px;
+}
+
+.produto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.produto-info {
+  flex-grow: 1;
+}
+
+.produto-controles {
+  display: flex;
+  gap: 5px;
+}
+
+/* Responsividade Básica */
+@media (max-width: 1500px) {
+  body {
+    padding: 10px;
+   /* display: flex;
+    background-image: url("../widgets/image.png");
+    background-size: cover; /* Faz a imagem cobrir toda a tela 
+    background-repeat: no-repeat; /* Evita que a imagem se repita 
+    background-position: center center; /* Centraliza a imagem */
+  }
+  
+  .produto-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .produto-controles {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+
+/* =========================
+   Estilos da Tela de Carrinho
+========================= */
+.container {
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  justify-content: space-around;
+  margin: 20px auto;
+}
+
+.container p {
+  font-size: 15px;
+  margin: 20px 0 auto;
+  text-align: center;
+}
+
+/* Título do Carrinho */
+h1 {
+  font-size: 1.4rem;
+  background-color: #4d6600;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Botão Continuar Comprando */
+.continuar-btn {
+  border: 1px solid #4d6600;
+  color: #4d6600;
+  background-color: white;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 20px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  margin: 16px auto;
+}
+
+/* Produtos do Carrinho */
+.produto {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.produto img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.produto .info {
+  flex: 1;
+}
+
+.produto .nome {
+  font-weight: bold;
+}
+
+.produto .preco {
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.controle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.controle button {
+  background-color: #eee;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.controle span {
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Botão de Remover (Lixeira) */
+.produto .delete {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Total do Carrinho */
+.valorTotal {
+  position: fixed;
+  bottom: 48px;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+}
+
+.total {
+  background-color: #eee;
+  padding: 10px;
+  margin-top: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão Pagar */
+.btnPagar {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+}
+
+#abrirPagamento {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #658000;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+}
+
+#abrirPagamento:hover {
+  background-color: #4d6600;
+  cursor: pointer;
+}
+
+/* Modal de Pagamento */
+.hidden {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.payment-modal {
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.drag-icon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #ddd;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.payment-options {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.payment-option {
+  background-color: #f1f1f1;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.payment-option.selected {
+  background-color: #4a6400;
+  color: white;
+}
+
+#finalizarBtn {
+  background-color: #658000;
+  color: white;
+  padding: 15px;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Centralizar a seção */
+.centralizado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Logo e texto lado a lado */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Imagem do carrinho */
+.logo-container img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Texto da logo */
+.logo-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Botão "Acessar" */
+.login_cadastrar {
+  padding: 10px 20px;
+  background-color: #21be7a;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.login_cadastrar:hover {
+  background-color: #1a9a62;
+}
+
+/* Container do formulário */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Inputs e botões */
+input, button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #21be7a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #1a9a62;
+}
+
+/* Links em linha */
+.login-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.login-links a {
+  color: #21be7a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-links a:hover {
+  text-decoration: underline;
+}
+
+label {
+  font-weight: bold;
+  text-align: left;
+}
+
+.bg-image {
+  background-image: url('../widgets/image.png'); /* Caminho da imagem */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
